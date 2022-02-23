@@ -1,8 +1,10 @@
+"""database using sqlite"""
 import sqlite3
 from datetime import date
 
 
 def create_db():
+    """Function witch create database if it not exist"""
     connection = sqlite3.connect('data.db')
     cursor = connection.cursor()
 
@@ -13,6 +15,7 @@ def create_db():
 
 
 def get_db():
+    """Function which download all data from database to list"""
     connection = sqlite3.connect('data.db')
     cursor = connection.cursor()
 
@@ -24,6 +27,7 @@ def get_db():
     return collection
 
 def show_all():
+    """Function wchich print all data"""
     collection = get_db()
     if collection == []:
         print("Your collection is empty")
@@ -35,6 +39,7 @@ Date - {password['date']}
 
 
 def show_last():
+    """Function which print last added data"""
     collection = get_db()
     if collection == []:
         print("Your collection is empty")
@@ -43,6 +48,7 @@ def show_last():
 Date - {collection[-1]['date']}""")
 
 def add_password(password):
+    """Function which add new record to our database"""
     connection = sqlite3.connect('data.db')
     cursor = connection.cursor()
 
@@ -52,6 +58,7 @@ def add_password(password):
     connection.close()
 
 def delete_password():
+    """Function wchich delete the given record or all of them """
     password = input("Input the password to delete or input 'ALL' to delete all passwords: ")
     connection = sqlite3.connect('data.db')
     cursor = connection.cursor()

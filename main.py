@@ -1,3 +1,4 @@
+"""Password generator with database"""
 import random
 from utils import database
 
@@ -9,6 +10,7 @@ DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 SPECIAL = ['@', '#', '$', '.', '*', ',', '!']
 
 def easy_pass(password_len):
+    """Function which generate password with low strenght"""
     characters =random.sample(UPPERCASE, 1) + random.sample(UPPERCASE + LOWERCASE, password_len - 1)
     random.shuffle(characters)
     password = "".join(characters)
@@ -17,6 +19,7 @@ def easy_pass(password_len):
 
 
 def medium_pass(password_len):
+    """Function which generate password with medium strenght"""
     characters = random.sample(DIGITS, 1)+ random.sample(UPPERCASE, 1) + random.sample(DIGITS + UPPERCASE + LOWERCASE, password_len - 2)
     random.shuffle(characters)
     password = "".join(characters)
@@ -25,6 +28,7 @@ def medium_pass(password_len):
 
 
 def strong_pass(password_len):
+    """Function which generate password with strong strenght"""
     characters = random.sample(SPECIAL, 1) + random.sample(DIGITS, 1) + random.sample(UPPERCASE, 1) + random.sample(SPECIAL + DIGITS + UPPERCASE + LOWERCASE, password_len - 3)
     random.shuffle(characters)
     password = "".join(characters)
@@ -34,6 +38,7 @@ def strong_pass(password_len):
 
 
 def generate_password_menu():
+    """User password generetor menu"""
     user_selection = 0
     while user_selection != '4':
         condition = False
@@ -69,6 +74,7 @@ What you wanna do: """)
 
 
 def database_options_menu():
+    """Database option menu"""
     user_selection = 0
     while user_selection != '2':
         user_selection = input("""
@@ -84,6 +90,7 @@ What you wanna do: """)
             continue
 
 def main_menu():
+    """Function with main menu"""
     user_selection = 0
     while user_selection != '5':
         user_selection = input("""
